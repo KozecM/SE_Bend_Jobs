@@ -3,6 +3,10 @@ class BusinessesController < ApplicationController
         @business = Business.new
     end 
 
+    # def index 
+    #     @businesses = Business.all
+    # end
+
     def create
         @workflow = CreatesBusiness.new(name: params[:business][:name])
         workflow.create

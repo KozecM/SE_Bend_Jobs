@@ -1,15 +1,14 @@
-<h1> ALL JOBS <h1>
+<h1> ALL businesses <h1>
 <table>
     <thead>
         <tr>
-            <td>Job Title</td>
+            <td>Business Name</td>
         <tr>
     </thead>
     <tbody>
-    <%@jobs.each do |job|%>
+    <%@businesses.each do |business|%>
     <tr>
-        <td><%= job.title%></td>
-        <td><%= job.description%></td>
+        <td><%= business.name%></td>
     </tr>
     <%end%>
     </tbody>
