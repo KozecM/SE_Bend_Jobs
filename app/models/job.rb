@@ -1,13 +1,6 @@
 class Job < ApplicationRecord
   belongs_to :business
 
-  # def initialize 
-  #   @available = false
-  #   @description
-  #   @payRate
-   
-  # end
-
   def mark_as_available
     @available = true
   end
@@ -28,5 +21,4 @@ class Job < ApplicationRecord
 
     return @payRate
   end
-
 end

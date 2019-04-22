@@ -1,4 +1,3 @@
-
 class Business < ApplicationRecord
     has_many :jobs, dependent: :destroy
 
