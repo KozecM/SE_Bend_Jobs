@@ -1,10 +1,6 @@
 
-class Business
-    attr_accessor :jobs
-
-    def initialize
-        @jobs = []
-    end
+class Business < ApplicationRecord
+    has_many :jobs, dependent: :destroy
 
     def hiring?
         jobs.any?(&:available?)

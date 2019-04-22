@@ -10,6 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_04_22_151729) do
+
+  create_table "businesses", force: :cascade do |t|
+    t.string "name"
+    t.boolean "hiring"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.integer "business_id"
+    t.string "title"
+    t.string "description"
+    t.integer "pay"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_id"], name: "index_jobs_on_business_id"
+  end
 
 end

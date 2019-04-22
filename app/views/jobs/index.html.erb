@@ -1,0 +1,16 @@
+<h1> ALL JOBS <h1>
+<table>
+    <thead>
+        <tr>
+            <td>Job Title</td>
+        <tr>
+    </thead>
+    <tbody>
+    <%@jobs.each do |job|%>
+    <tr>
+        <td><%= job.title%></td>
+        <td><%= job.description%></td>
+    </tr>
+    <%end%>
+    </tbody>
+</table>
