@@ -20,7 +20,7 @@ class CreatesJob
     def convert_string_to_description
         description_string.split("\n").map do |one_description|
             title, size_string = one_description.split(":")
-            Job.new(title: title, size: size_as_integer(size_string))
+            Job.new(title: title)
         end
     end
 
