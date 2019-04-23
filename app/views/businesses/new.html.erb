@@ -5,7 +5,7 @@
     <%= f.text_field(:name) %>
     <br />
     <%= f.label(:jobs)%>
-    <% text_area_tag("business[jobs]")%>
+    <%= text_area_tag("business[jobs]")%>
     <br />
-    <%= f.submit%>
+    <%= f.submit "Create Business"%>
 <%end%>
