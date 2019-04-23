@@ -14,7 +14,7 @@ RSpec.describe Business do
     expect(business).not_to be_hiring
   end
 
-  it "marks a business done if the jobs are available" do
+  it "marks a business as hiring if the jobs are available" do
     business.jobs << job
     job.mark_as_available
     expect(business).to be_hiring

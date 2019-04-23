@@ -9,6 +9,12 @@ class Job < ApplicationRecord
     @available
   end
 
+  def add_job_title(jobTitle)
+    @title = jobTitle
+
+    return @title
+  end
+
   def add_job_description(jobDescription)
    
     @description = jobDescription
@@ -16,9 +22,9 @@ class Job < ApplicationRecord
     return @description
   end
 
-  def add_job_pay_rate(pay)
-    @payRate = pay
+  def add_job_pay_rate(payRate)
+    @pay = payRate
 
-    return @payRate
+    return @pay
   end
 end
