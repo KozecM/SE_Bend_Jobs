@@ -7,6 +7,6 @@ class CreatesBusiness
 
     def build
         self.business = Business.new(name: name)
-        businesss
+        business
     end
 end

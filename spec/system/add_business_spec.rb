@@ -5,7 +5,7 @@ RSpec.describe "adding a business", type: :system do
         visit new_business_path
         fill_in "Name", with: "FAKE BUSINESS NAME"
         fill_in "Jobs", with: "FAKE JOB\n"
-        Click_on("Create Business")
+        click_on("Create Business")
         visit business_path
         expect(page).to have_content("FAKE BUSINESS NAME")
     end
