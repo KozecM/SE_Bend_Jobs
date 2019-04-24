@@ -3279,3 +3279,100 @@ Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.5ms)
   [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
   [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
   [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/businesses/new" for 127.0.0.1 at 2019-04-24 11:21:36 -0700
+Processing by BusinessesController#new as HTML
+  Rendering businesses/new.html.erb within layouts/application
+  Rendered businesses/new.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 176ms (Views: 171.2ms | ActiveRecord: 0.0ms)
+Started POST "/businesses" for 127.0.0.1 at 2019-04-24 11:21:37 -0700
+Processing by BusinessesController#create as HTML
+  Parameters: {"utf8"=>"✓", "business"=>{"name"=>"FAKE BUSINESS NAME", "jobs"=>"FAKE JOB DEV:70000"}, "commit"=>"Create Business"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBusiness Create (0.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "FAKE BUSINESS NAME"], ["created_at", "2019-04-24 18:21:37.011151"], ["updated_at", "2019-04-24 18:21:37.011151"]]
+  [1m[36mJob Create (0.2ms)[0m  [1m[32mINSERT INTO "jobs" ("business_id", "title", "pay", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["business_id", 1], ["title", "FAKE JOB DEV"], ["pay", 70000], ["created_at", "2019-04-24 18:21:37.012647"], ["updated_at", "2019-04-24 18:21:37.012647"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://127.0.0.1/businesses
+Completed 302 Found in 5ms (ActiveRecord: 0.7ms)
+Started GET "/businesses" for 127.0.0.1 at 2019-04-24 11:21:37 -0700
+Processing by BusinessesController#index as HTML
+  Rendering businesses/index.html.erb within layouts/application
+  [1m[36mBusiness Load (0.2ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  [1m[36mJob Load (0.2ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."business_id" = ?[0m  [["business_id", 1]]
+  Rendered businesses/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.4ms)
+Started GET "/businesses" for 127.0.0.1 at 2019-04-24 11:21:37 -0700
+Processing by BusinessesController#index as HTML
+  Rendering businesses/index.html.erb within layouts/application
+  [1m[36mBusiness Load (0.1ms)[0m  [1m[34mSELECT "businesses".* FROM "businesses"[0m
+  [1m[36mJob Load (0.1ms)[0m  [1m[34mSELECT "jobs".* FROM "jobs" WHERE "jobs"."business_id" = ?[0m  [["business_id", 1]]
+  Rendered businesses/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.1ms)
+  [1m[36mBusiness Load (0.1ms)[0m  [1m[34mSELECT  "businesses".* FROM "businesses" WHERE "businesses"."name" = ? LIMIT ?[0m  [["name", "FAKE BUSINESS NAME"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/businesses/new" for 127.0.0.1 at 2019-04-24 11:21:37 -0700
+Processing by BusinessesController#new as HTML
+  Rendering businesses/new.html.erb within layouts/application
+  Rendered businesses/new.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+Started POST "/businesses" for 127.0.0.1 at 2019-04-24 11:21:37 -0700
+Processing by BusinessesController#create as HTML
+  Parameters: {"utf8"=>"✓", "business"=>{"name"=>"", "jobs"=>"FAKE JOB DEV:70000"}, "commit"=>"Create Business"}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering businesses/new.html.erb within layouts/application
+  Rendered businesses/new.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBusiness Create (3.3ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "TEST BUSINESS"], ["created_at", "2019-04-24 18:21:37.074162"], ["updated_at", "2019-04-24 18:21:37.074162"]]
+  [1m[36mJob Create (0.7ms)[0m  [1m[32mINSERT INTO "jobs" ("business_id", "title", "pay", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["business_id", 1], ["title", "FAKE WEB DEV"], ["pay", 0], ["created_at", "2019-04-24 18:21:37.081662"], ["updated_at", "2019-04-24 18:21:37.081662"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBusiness Create (0.6ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "TEST BUSINESS"], ["created_at", "2019-04-24 18:21:37.099010"], ["updated_at", "2019-04-24 18:21:37.099010"]]
+  [1m[36mJob Create (0.7ms)[0m  [1m[32mINSERT INTO "jobs" ("business_id", "title", "pay", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["business_id", 1], ["title", "FAKE WEB DEV"], ["pay", 0], ["created_at", "2019-04-24 18:21:37.103876"], ["updated_at", "2019-04-24 18:21:37.103876"]]
+  [1m[35m (0.3ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBusiness Create (0.2ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "TEST BUSINESS"], ["created_at", "2019-04-24 18:21:37.133311"], ["updated_at", "2019-04-24 18:21:37.133311"]]
+  [1m[36mJob Create (0.2ms)[0m  [1m[32mINSERT INTO "jobs" ("business_id", "title", "pay", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["business_id", 1], ["title", "FAKE WEB DEV"], ["pay", 90000], ["created_at", "2019-04-24 18:21:37.134514"], ["updated_at", "2019-04-24 18:21:37.134514"]]
+  [1m[36mJob Create (0.1ms)[0m  [1m[32mINSERT INTO "jobs" ("business_id", "title", "pay", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["business_id", 1], ["title", "FAKE FULL STACK"], ["pay", 120000], ["created_at", "2019-04-24 18:21:37.135659"], ["updated_at", "2019-04-24 18:21:37.135659"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mBusiness Create (0.2ms)[0m  [1m[32mINSERT INTO "businesses" ("name", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["name", "TEST BUSINESS"], ["created_at", "2019-04-24 18:21:37.139028"], ["updated_at", "2019-04-24 18:21:37.139028"]]
+  [1m[36mJob Create (0.2ms)[0m  [1m[32mINSERT INTO "jobs" ("business_id", "title", "pay", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["business_id", 1], ["title", "FAKE WEB DEV"], ["pay", 90000], ["created_at", "2019-04-24 18:21:37.140240"], ["updated_at", "2019-04-24 18:21:37.140240"]]
+  [1m[36mJob Create (0.4ms)[0m  [1m[32mINSERT INTO "jobs" ("business_id", "title", "pay", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["business_id", 1], ["title", "FAKE FULL STACK"], ["pay", 120000], ["created_at", "2019-04-24 18:21:37.141633"], ["updated_at", "2019-04-24 18:21:37.141633"]]
+  [1m[35m (0.4ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
