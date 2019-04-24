@@ -3,12 +3,14 @@
     <thead>
         <tr>
             <td>Business Name</td>
+            <td> Job Title</td>
+            <td> Job Pay</td>
         <tr>
     </thead>
     <tbody>
     <%@businesses.each do |business|%>
-    <tr>
-        <td><%= business.name%></td>
+    <tr class="business-row" id="<%=dom_id(business)%>">
+        <td class="name"><%= business.name%></td>
     </tr>
     <%end%>
     </tbody>

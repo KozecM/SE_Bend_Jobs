@@ -21,30 +21,39 @@ RSpec.describe CreatesBusiness do
 
         describe "with a single string" do
             let(:job_string) {"FAKE WEB DEV"}
-            specify {expect(jobs.pay).to eq(0)}
+
+            specify {expect(jobs.size).to eq(1)}
             specify { expect(jobs.first).to have_attributes(title: "FAKE WEB DEV", pay: 0)}
         end
 
         describe "with a single string with pay" do
             let(:job_string) {"FAKE WEB DEV: 90000"}
-            specify { expect(jobs.pay).to eq(90000)}
+            specify { expect(jobs.size).to eq(1)}
             specify { expect(jobs.first).to have_attributes( title: "FAKE WEB DEV", pay: 90000)}
         end
 
         describe "with multiple jobs" do
-            let(:task_string) { "FAKE WEB DEV:90000\nFAKE FULL STACK:120000" }
-            specify { expect(jobs.size).to eq(120000) }
+            let(:job_string) { "FAKE WEB DEV:90000\nFAKE FULL STACK:120000" }
+            specify { expect(jobs.size).to eq(2) }
             specify { expect(jobs).to match(
-            [an_object_having_attributes(title: "FAKE WEB DEV", size: 90000),
-            an_object_having_attributes(title: "FAKE FULL STACK", size: 120000)]) }
+            [an_object_having_attributes(title: "FAKE WEB DEV", pay: 90000),
+            an_object_having_attributes(title: "FAKE FULL STACK", pay: 120000)]) }
         end
 
         describe "attaches job to a business" do
             let(:job_string) {"FAKE WEB DEV:90000\nFAKE FULL STACK:120000"}
             before(:example) {creator.create}
-            specify { expect(creator.business.jobs.pay).to eq(120000)}
+            specify { expect(creator.business.jobs.size).to eq(2)}
             specify { expect(creator.business).not_to be_a_new_record}
         end
 
+    end
+
+    describe "failure cases" do
+        it "fails when trying to save business with no name" do
+            creator = CreatesBusiness.new(name: "", job_string: "")
+            creator.create
+            expect(creator).not_to be_a_success
+        end
     end
 end

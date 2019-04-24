@@ -6,6 +6,10 @@ class CreatesBusiness
         @job_string = job_string
     end
 
+    def success?
+        @success
+    end
+
     def build
         self.business = Business.new(name: name)
         business.jobs = convert_string_to_job
@@ -14,7 +18,8 @@ class CreatesBusiness
 
     def create
         build
-        business.save
+        result = business.save
+        @success = result
     end
 
     def convert_string_to_job
@@ -26,6 +31,6 @@ class CreatesBusiness
 
     def pay_as_integer(pay_string)
         return 0 if pay_string.blank?
-        [pay_string.to_i, 1].max
+        [pay_string.to_i, 0].max
     end
 end

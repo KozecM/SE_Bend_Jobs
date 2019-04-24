@@ -11,6 +11,11 @@ class BusinessesController < ApplicationController
         @workflow = CreatesBusiness.new(name: params[:business][:name],
         job_string: params[:business][:jobs])
         @workflow.create
-        redirect_to businesses_path
+        if @workflow.success?
+            redirect_to businesses_path
+        else
+            @business = @workflow.business
+            render :new
+        end
     end
 end
