@@ -3,13 +3,24 @@
     <thead>
         <tr>
             <td>Business Name</td>
+            <td>Job Title</td>
+            <td>Job Pay</td>
         <tr>
     </thead>
     <tbody>
     <%@businesses.each do |business|%>
     <tr>
-        <td><%= business.name%></td>
+        <td><%= business.name %></td>
     </tr>
+    <%end%>
+
+    <%@businesses.each do |business|%>
+    <%business.jobs.each do |job|%>
+    <tr>
+        <td><%= job.title%></td>
+        <td><%= job.pay%></td>
+    </tr>
+    <%end%>
     <%end%>
     </tbody>
 </table>

@@ -8,5 +8,7 @@ RSpec.describe "adding a business", type: :system do
         click_on("Create Business")
         visit businesses_path
         expect(page).to have_content("FAKE BUSINESS NAME")
+        expect(page).to have_content("FAKE JOB DEV")
+        expect(page).to have_content(70000)
     end
 end
