@@ -1,18 +1,18 @@
 require "rails_helper"
 
 RSpec.describe CreatesBusiness do
-    let(:creator) {CreatesBusiness.new(name: "NEW BUSINESS", job_string: job_string)}
+    let(:creator) {CreatesBusiness.new(name: "TEST BUSINESS", job_string: job_string)}
 
     describe "initialization" do
         let(:job_string){""}
         it "creates a business given a name" do
             creator.build
-            expect(creator.business.name).to eq("NEW BUSINESS")
+            expect(creator.business.name).to eq("TEST BUSINESS")
         end
     end
 
     describe "job string parsing" do
-        let(:jobs) { creator.convert_string_to_job}
+        let(:jobs) { creator.convert_string_to_job }
 
         describe "with an empty string" do
             let(:job_string) {""}
@@ -21,7 +21,7 @@ RSpec.describe CreatesBusiness do
 
         describe "with a single string" do
             let(:job_string) {"FAKE WEB DEV"}
-
+            before(:example) {creator.create}
             specify {expect(jobs.size).to eq(1)}
             specify { expect(jobs.first).to have_attributes(title: "FAKE WEB DEV", pay: 0)}
         end

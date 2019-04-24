@@ -10,6 +10,9 @@ RSpec.describe "adding a business", type: :system do
         @business = Business.find_by(name: "FAKE BUSINESS NAME")
         expect(page).to have_selector(
             "#business_#{@business.id} .name", text: "FAKE BUSINESS NAME")
+        expect(page).to have_content("FAKE BUSINESS NAME")
+        expect(page).to have_content("FAKE JOB DEV")
+        expect(page).to have_content(70000)
     end
 
     it "does not allow user to creat a business without a name" do
