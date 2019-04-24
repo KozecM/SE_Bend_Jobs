@@ -9,14 +9,9 @@
     </thead>
     <tbody>
     <%@businesses.each do |business|%>
-    <tr class="business-row" id="<%=dom_id(business)%>">
-        <td class="name"><%= business.name%></td>
-    </tr>
-    <%end%>
-
-    <%@businesses.each do |business|%>
     <%business.jobs.each do |job|%>
-    <tr>
+    <tr class="business-row" id="<%=dom_id(business)%>">
+        <td class="name"><%= business.name %></td>
         <td><%= job.title%></td>
         <td><%= job.pay%></td>
     </tr>
