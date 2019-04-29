@@ -24,8 +24,8 @@ class CreatesBusiness
 
     def convert_string_to_job
         job_string.split("\n").map do |one_job| 
-            title, pay_string = one_job.split(":")
-            Job.new(title: title, pay: pay_as_integer(pay_string))
+            title, pay_string, description, available = one_job.split(":")
+            Job.new(title: title, pay: pay_as_integer(pay_string), description: description, available: available)
         end
     end
 

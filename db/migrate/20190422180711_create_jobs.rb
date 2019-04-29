@@ -5,6 +5,7 @@ class CreateJobs < ActiveRecord::Migration[5.2]
       t.string :title
       t.string :description
       t.integer :pay
+      t.string :available
 
       t.timestamps
     end

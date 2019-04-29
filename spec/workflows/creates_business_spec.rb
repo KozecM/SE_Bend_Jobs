@@ -32,6 +32,21 @@ RSpec.describe CreatesBusiness do
             specify { expect(jobs.first).to have_attributes( title: "FAKE WEB DEV", pay: 90000)}
         end
 
+        describe "with a description" do
+            let(:job_string) { "FAKE WEB DEV:9000:FAKE DESCRIPTION" }
+            specify{ expect(jobs.first).to have_attributes(title: "FAKE WEB DEV", pay: 9000, description: "FAKE DESCRIPTION")}
+        end
+
+        describe "with availability" do
+            let(:job_string) { "FAKE WEB DEV:9000:FAKE DESCRIPTION:Available" }
+            specify{ expect(jobs.first).to have_attributes(title: "FAKE WEB DEV", pay: 9000, description: "FAKE DESCRIPTION", available: "Available")}
+        end
+
+        describe "with no availability" do
+            let(:job_string) { "FAKE WEB DEV:9000:FAKE DESCRIPTION:Not Available" }
+            specify{ expect(jobs.first).to have_attributes(title: "FAKE WEB DEV", pay: 9000, description: "FAKE DESCRIPTION", available: "Not Available")}
+        end
+
         describe "with multiple jobs" do
             let(:job_string) { "FAKE WEB DEV:90000\nFAKE FULL STACK:120000" }
             specify { expect(jobs.size).to eq(2) }
@@ -46,7 +61,6 @@ RSpec.describe CreatesBusiness do
             specify { expect(creator.business.jobs.size).to eq(2)}
             specify { expect(creator.business).not_to be_a_new_record}
         end
-
     end
 
     describe "failure cases" do

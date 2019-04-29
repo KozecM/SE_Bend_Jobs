@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2019_04_22_180711) do
     t.string "title"
     t.string "description"
     t.integer "pay"
+    t.string "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["business_id"], name: "index_jobs_on_business_id"

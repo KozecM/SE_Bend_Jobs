@@ -4,7 +4,7 @@ RSpec.describe "adding a business", type: :system do
     it "allows user to create a business with open jobs" do
         visit new_business_path
         fill_in "Name", with: "FAKE BUSINESS NAME"
-        fill_in "Jobs", with: "FAKE JOB DEV:70000"
+        fill_in "Jobs", with: "FAKE JOB DEV:70000:FAKE DESCRIPTION:Available"
         click_on("Create Business")
         visit businesses_path
         @business = Business.find_by(name: "FAKE BUSINESS NAME")
@@ -13,6 +13,8 @@ RSpec.describe "adding a business", type: :system do
         expect(page).to have_content("FAKE BUSINESS NAME")
         expect(page).to have_content("FAKE JOB DEV")
         expect(page).to have_content(70000)
+        expect(page).to have_content("FAKE DESCRIPTION")
+        expect(page).to have_content("Available")
     end
 
     it "does not allow user to creat a business without a name" do
