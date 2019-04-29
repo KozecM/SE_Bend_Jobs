@@ -1,8 +1,9 @@
 class CreatesBusiness
     attr_accessor :name, :business, :job_string
 
-    def initialize(name: "", job_string: "")
+    def initialize(name: "", description: "",job_string: "")
         @name = name
+        @description = description
         @job_string = job_string
     end
 
@@ -12,6 +13,7 @@ class CreatesBusiness
 
     def build
         self.business = Business.new(name: name)
+        business.description = add_business_description
         business.jobs = convert_string_to_job
         business
     end
@@ -33,4 +35,9 @@ class CreatesBusiness
         return 0 if pay_string.blank?
         [pay_string.to_i, 0].max
     end
+
+    def add_business_description
+        business.description = @description;
+    end
+        
 end

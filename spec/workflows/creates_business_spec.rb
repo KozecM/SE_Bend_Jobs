@@ -1,13 +1,22 @@
 require "rails_helper"
 
 RSpec.describe CreatesBusiness do
-    let(:creator) {CreatesBusiness.new(name: "TEST BUSINESS", job_string: job_string)}
+    let(:creator) {CreatesBusiness.new(name: "TEST BUSINESS", description: description, job_string: job_string)}
 
     describe "initialization" do
         let(:job_string){""}
+        let(:description){""}
         it "creates a business given a name" do
             creator.build
             expect(creator.business.name).to eq("TEST BUSINESS")
+        end
+    end
+
+    describe "add info about business" do
+
+        describe "with an empty description" do
+            let(:description){""}
+            specify{expect(creator.business.description).to eq("")}
         end
     end
 
@@ -52,6 +61,12 @@ RSpec.describe CreatesBusiness do
     describe "failure cases" do
         it "fails when trying to save business with no name" do
             creator = CreatesBusiness.new(name: "", job_string: "")
+            creator.create
+            expect(creator).not_to be_a_success
+        end
+
+        it "fails when trying to post a job without a Title" do
+            creator = CreatesBusiness.new(name: "FAKE Business", job_string:":90000" )
             creator.create
             expect(creator).not_to be_a_success
         end

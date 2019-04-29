@@ -1,5 +1,6 @@
 class Job < ApplicationRecord
   belongs_to :business
+  validates :title, presence: true
 
   def mark_as_available
     @available = true
