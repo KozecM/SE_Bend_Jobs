@@ -68,7 +68,7 @@ RSpec.describe CreatesBusiness do
 
         describe "business salary sum" do
         let(:job_string) { "FAKE WEB DEV:9000:FAKE DESCRIPTION" }
-        specify {expect(creator.business.sum_job_salaries).not_to eq(jobs.sum(:pay))}
+        specify {expect(creator.business.sum_job_salaries).to eq(jobs.sum(:pay))}
         end
     end
 
