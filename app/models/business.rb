@@ -11,6 +11,6 @@ class Business < ApplicationRecord
     end
 
     def open_job_salaries
-        @salaries = jobs.sum(:pay)
+        @salaries = jobs.sum(&:pay)
     end
 end

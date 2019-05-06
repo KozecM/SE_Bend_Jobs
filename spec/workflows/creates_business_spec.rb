@@ -63,15 +63,6 @@ RSpec.describe CreatesBusiness do
         end
     end
 
-    describe "job salary tracking" do
-        let(:jobs) { creator.convert_string_to_job }
-
-        describe "business salary sum" do
-        let(:job_string) { "FAKE WEB DEV:9000:FAKE DESCRIPTION" }
-        specify {expect(creator.business.sum_job_salaries).to eq(jobs.sum(:pay))}
-        end
-    end
-
     describe "failure cases" do
         it "fails when trying to save business with no name" do
             creator = CreatesBusiness.new(name: "", job_string: "")
