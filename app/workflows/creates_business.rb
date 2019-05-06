@@ -33,4 +33,8 @@ class CreatesBusiness
         return 0 if pay_string.blank?
         [pay_string.to_i, 0].max
     end
+
+    def sum_job_salaries
+        @salaries = business.jobs.sum(:pay)
+    end
 end

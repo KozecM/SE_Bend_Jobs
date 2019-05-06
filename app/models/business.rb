@@ -9,4 +9,8 @@ class Business < ApplicationRecord
     def available_jobs
         jobs.available?
     end
+
+    def open_job_salaries
+        @salaries = jobs.sum(:pay)
+    end
 end
