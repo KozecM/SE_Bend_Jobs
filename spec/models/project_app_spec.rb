@@ -37,11 +37,24 @@ RSpec.describe Business do
       expect(business.open_job_salaries).to be > 0
     end
 
+    it "can remove a job" do
+      business.jobs << fullJobSalary100K
+      expect(business.jobs).to include(fullJobSalary100K)
+      business.remove(fullJobSalary100K)
+      expect(business.jobs).to_not include(fullJobSalary100K)
+    end
+
     it "expect a business to keep track of salarry totals" do
       business.jobs << fullJobSalary92K
       business.jobs << fullJobSalary100K
 
       expect(business.open_job_salaries).to eq(192000)
+      byebug
+      expect(business.jobs.first.pay).to eq(92000)
+      business.jobs.first.
+      byebug
+
+      expect(business.open_job_salaries).to eq(92000)
     end
 
     
