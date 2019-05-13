@@ -23,7 +23,6 @@ RSpec.describe Business do
   end
 
   describe "open job salary tracking" do
-
     it "jobs to be empty" do
       expect(business.jobs).to be_empty
     end
@@ -49,14 +48,8 @@ RSpec.describe Business do
       business.jobs << fullJobSalary100K
 
       expect(business.open_job_salaries).to eq(192000)
-      byebug
       expect(business.jobs.first.pay).to eq(92000)
-      business.jobs.first.
-      byebug
-
       expect(business.open_job_salaries).to eq(92000)
     end
-
-    
   end
 end
