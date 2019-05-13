@@ -2,7 +2,7 @@ require "rails_helper"
 require "business.rb"
 
 RSpec.describe Business do
-  let(:business) { Business.new(name: "FAKE BUSINESS") }
+  let(:business) {FactoryBot.build_stubbed(:business)}
   let(:emptyJob) { Job.new }
   let(:fullJobSalary92K) { Job.new(title: "FAKE JOB WITH SALARY 92000", pay: 92000, description: "FAKE DESCRIPTION", available: "true") }
   let(:fullJobSalary100K) { Job.new(title: "FAKE JOB WITH SALARY 100000", pay: 100000, description: "FAKE DESCRIPTION", available: "true") }
