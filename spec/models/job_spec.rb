@@ -21,8 +21,34 @@ RSpec.describe Job, type: :model do
     expect(old_job.created_at.ctime).to eq(6.months.ago.ctime)
   end
 
-  it "Doesn't accept a job with no pay" do
-    byebug
-    refute(no_pay)
+  # it "Doesn't accept a job with no pay" do
+  #   refute(no_pay)
+  # end
+
+  # it "runs a big dependency" do
+  #   job = FactoryBot.create(:job)
+  #   result = job.preform(BigDependency.new)
+  #   expect(result).to eq(42)
+  # end
+  it "stubs an bigdependency object" do
+    bigdependency = BigDependency.new
+    allow(bigdependency).to receive(:execute).and_return(42)
+    job = FactoryBot.create(:job)
+    expect(job.preform(bigdependency)).to eq(42)
+  end
+  it "mocks a dependency" do
+    job = FactoryBot.create(:job)
+    mock_dependency = BigDependency.new
+    expect(mock_dependency).to receive(:execute).and_return(42)
+    result = job.preform(mock_dependency)
+    expect(result).to eq(42)
+  end
+
+  #I tried stubbing the class both the BigDependency and the Job. but neither worked.
+  it "stubs the class" do
+    allow(BigDependency).to receive(:execute).and_return(BigDependency.new())
+    job = FactoryBot.create(:job)
+    result = job.preform(BigDependency.execute(1))
+    expect(result).to eq(42)
   end
 end

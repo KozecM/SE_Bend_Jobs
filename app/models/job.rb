@@ -30,7 +30,7 @@ class Job < ApplicationRecord
     return @pay
   end
 
-  def preform(big_dependency.execute)
+  def preform(big_dependency)
     big_dependency.execute
     return 42
   end
