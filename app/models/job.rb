@@ -35,4 +35,8 @@ class Job < ApplicationRecord
 
     return @pay
   end
+
+  def add_job_id(id)
+    @id = id
+  end
 end

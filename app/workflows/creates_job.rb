@@ -1,11 +1,12 @@
 class CreatesJob
     attr_accessor :title, :job, :description_string
 
-    def initialize(title: "", description_string: "", pay: "", availability: availability)
+    def initialize(title: "", description_string: "", pay: "", availability: availability, id:"")
         @title = title
         @description_string = description_string
         @pay = pay
         @availability = availability
+        @id = id
     end
 
     def build
