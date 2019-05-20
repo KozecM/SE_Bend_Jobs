@@ -1,12 +1,8 @@
 class Job < ApplicationRecord
-  belongs_to :business
+  belongs_to :business, optional: true
 
   def mark_as_available
-    @available = true
-  end
-
-  def available?
-    @available
+    self.available = true
   end
 
   def add_job_title(jobTitle)
@@ -15,15 +11,13 @@ class Job < ApplicationRecord
     return @title
   end
 
-  def job_title
-    return @title
-  end
-
   def add_job_description(jobDescription)
-   
     @description = jobDescription
 
     return @description
+  end
+
+  def validates_pay_value
   end
 
   def job_pay
