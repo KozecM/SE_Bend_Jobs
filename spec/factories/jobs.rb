@@ -7,7 +7,7 @@ FactoryBot.define do
     available { false }
 
     trait :nopay do
-      pay { 0 }
+      pay { nil }
     end
 
     trait :available do

@@ -13,7 +13,7 @@ RSpec.describe Job, type: :model do
 
   it "Has a new job with availability" do
     expect(new_job.available).to be_truthy
-    expect(new_job.created_at.day).to eq(1.day.ago.day)
+    expect(new_job.created_at.ctime).to eq(1.day.ago.ctime)
   end
 
   it "Has an old job with availability" do
@@ -21,7 +21,8 @@ RSpec.describe Job, type: :model do
     expect(old_job.created_at.ctime).to eq(6.months.ago.ctime)
   end
 
-  it "Has a job with no pay" do
-    expect(no_pay.pay).to eq(0)
+  it "Doesn't accept a job with no pay" do
+    byebug
+    refute(no_pay)
   end
 end

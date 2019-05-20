@@ -17,6 +17,9 @@ class Job < ApplicationRecord
     return @description
   end
 
+  def validates_pay_value
+  end
+
   def job_pay
     return @pay
   end
