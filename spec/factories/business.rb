@@ -1,16 +1,15 @@
 FactoryBot.define do
-  factory :business do
-    name { "Fake Business Name" }
-    job_string { "FAKE WEB DEV:9000:FAKE DESCRIPTION:Not Available" }
+    factory :business do
+        name {"TEST BUSINESS"}
+        jobs {[]}
 
+        trait :WithFullJobSalary92K do
+            jobs { [Job.new(title: "FAKE JOB WITH SALARY 92000", pay: 92000, description: "FAKE DESCRIPTION", available: "true")] }
+        end
 
-    trait :noJobs do
-      job_string { '' }
+        trait :WithfullJobSalary100K do
+          jobs { [Job.new(title: "FAKE JOB WITH SALARY 92000", pay: 92000, description: "FAKE DESCRIPTION", available: "true")] }
+        end
+
     end
-
-    trait :fullStack do
-      job_string { true }
-    end
-
-  end
 end

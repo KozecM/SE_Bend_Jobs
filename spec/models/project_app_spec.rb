@@ -3,6 +3,7 @@ require "business.rb"
 
 RSpec.describe Business do
   let(:business) {FactoryBot.build_stubbed(:business)}
+  let(:with_1_job) {FactoryBot.build_stubbed(:business, :WithFullJobSalary92K)}
   let(:emptyJob) { Job.new }
   let(:fullJobSalary92K) { Job.new(title: "FAKE JOB WITH SALARY 92000", pay: 92000, description: "FAKE DESCRIPTION", available: "true") }
   let(:fullJobSalary100K) { Job.new(title: "FAKE JOB WITH SALARY 100000", pay: 100000, description: "FAKE DESCRIPTION", available: "true") }
@@ -32,8 +33,8 @@ RSpec.describe Business do
     end
 
     it "expects a business with an open job to have a salary larger than 0" do
-      business.jobs << fullJobSalary92K
-      expect(business.open_job_salaries).to be > 0
+      # business.jobs << fullJobSalary92K
+      expect(with_1_job.open_job_salaries).to be > 0
     end
 
     it "can remove a job" do
