@@ -48,7 +48,7 @@ RSpec.describe Business do
       business.jobs << fullJobSalary100K
 
       expect(business.open_job_salaries).to eq(192000)
-      expect(business.jobs.first.pay).to eq(92000)
+      business.remove(fullJobSalary100K)
       expect(business.open_job_salaries).to eq(92000)
     end
   end
